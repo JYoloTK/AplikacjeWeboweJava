@@ -11,35 +11,33 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 //@SessionScoped
 public class KredytBB {
-	private String x;
-	private String y;
-	private String z;
-	private Double result;
+	private Integer y, z;
+	private Double result, x;
 
 	@Inject
 	FacesContext ctx;
 
-	public String getX() {
-		return x;
+	public Double getX() {
+		return (x);
 	}
 
-	public void setX(String x) {
+	public void setX(Double x) {
 		this.x = x;
 	}
 	
-	public String getZ() {
-		return z;
+	public Integer getZ() {
+		return (z);
 	}
 
-	public void setZ(String z) {
+	public void setZ(Integer z) {
 		this.z = z;
 	}
 
-	public String getY() {
-		return y;
+	public Integer getY() {
+		return (y);
 	}
 
-	public void setY(String y) {
+	public void setY(Integer y) {
 		this.y = y;
 	}
 
@@ -52,20 +50,21 @@ public class KredytBB {
 	}
 
 	public boolean doTheMath() {
-		try {
-			double x = Double.parseDouble(this.x);
-			double y = Double.parseDouble(this.y);
-			double z = Double.parseDouble(this.z);
+//		try {
+//			double x = Double.parseDouble(this.x);
+//			double y = Double.parseDouble(this.y);
+//			double z = Double.parseDouble(this.z);
 
 			result = (x / z) + ((x / z) * (y / 100));
-
-			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Operacja wykonana poprawnie", null));
 			return true;
-		} catch (Exception e) {
-			ctx.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błąd podczas przetwarzania parametrów", null));
-			return false;
-		}
+
+//			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Operacja wykonana poprawnie", null));
+//			return true;
+//		} catch (Exception e) {
+//			ctx.addMessage(null,
+//					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błąd podczas przetwarzania parametrów", null));
+//			return false;
+//		}
 	}
 
 	// Go to "showresult" if ok

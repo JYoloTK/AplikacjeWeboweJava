@@ -17,15 +17,21 @@
 	<h:panelGrid id="calc" columns="3" cellpadding="5">
 	
 		<p:outputLabel for="x" value="Kwota:" />
-  		<p:inputText id="x" value="#{kredytBB.x}" required="true" requiredMessage="Wprowadz wartość" />
+  		<p:inputText id="x" value="#{kredytBB.x}" required="true" requiredMessage="Wprowadz wartość" converterMessage="Kwota musi być liczbą" validatorMessage="Kwota musi przekraczać 500zł">
+  		<f:validateDoubleRange minimum="500" />
+  		</p:inputText>
   		<p:messages for="x" />
   		
   		<p:outputLabel for="y" value="Oprocentowanie:" />
-  		<p:inputText id="y" value="#{kredytBB.y}" required="true" requiredMessage="Wprowadz wartość" />
+  		<p:inputText id="y" value="#{kredytBB.y}" required="true" requiredMessage="Wprowadz wartość" converterMessage="Oprocentowanie musi być liczbą całkowitą" validatorMessage="Oprocentowanie nie może przekroczyć 99%">
+  		<f:validateLongRange maximum="99" />
+  		</p:inputText>
   		<p:messages for="y" />
   		
 		<p:outputLabel for="z" value="Ilość miesięcy:" />
-		<p:inputText id="z" value="#{kredytBB.z}" required="true" requiredMessage="Wprowadz wartość" />
+		<p:inputText id="z" value="#{kredytBB.z}" required="true" requiredMessage="Wprowadz wartość" converterMessage="Ilość miesięcy musi być liczbą całkowitą" validatorMessage="Ilość miesięcy musi być większa niż 1">
+		<f:validateLongRange minimum="2" />
+		</p:inputText>
 		<p:messages for="z" />
 
 		<p:commandButton value="Oblicz" action="#{kredytBB.calc()}" update="@form"/>
